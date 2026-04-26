@@ -33,13 +33,6 @@ db/*.sqlite-journal
 db/*.sqlite-wal
 db/*.sqlite-shm
 
-# Legado /private/ (datos reais do servidor antigo)
-private/scores.json
-private/leads.json
-private/rate_limit.json
-private/.rate_limit_*
-private/backups/
-
 # Capturas
 m-*.png
 d-*.png

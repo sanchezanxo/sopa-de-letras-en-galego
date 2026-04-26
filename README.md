@@ -2,8 +2,6 @@
 
 Reto de 5 minutos: cantas sopas de letras es quen de resolver en galego? En produción en https://sopadeletras.aschavesdalingua.gal.
 
-> Forma parte do monorepo **xogos-as-chaves-da-lingua**. As instrucións xerais están no `CLAUDE.md` da raíz do monorepo.
-
 ## Stack
 
 - HTML5 + CSS + JS vanilla (ES6 módulos). Sen build-step.
@@ -33,13 +31,13 @@ rsync -avz \
   --exclude='db/sopa.sqlite*' \
   --exclude='router.php' \
   --exclude='*.log' --exclude='.DS_Store' \
-  ./sopa-de-letras/ aschavesdalingua:sopadeletras.aschavesdalingua.gal/
+  ./sopa-de-letras/ usuario@servidor:sopadeletras.aschavesdalingua.gal/
 ```
 
 No servidor (primeira vez):
 
 ```bash
-ssh aschavesdalingua
+ssh usuario@servidor
 cd sopadeletras.aschavesdalingua.gal
 cp api/config.sample.php api/config.php
 # editar: env=production, salts aleatorios, origen_permitido https
