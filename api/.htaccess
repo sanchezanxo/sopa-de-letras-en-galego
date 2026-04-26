@@ -1,0 +1,16 @@
+# Bloqueo total da config.
+<FilesMatch "^config\.php$">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Bloquear acceso directo a /api/lib/* e /api/endpoints/*
+  RewriteRule ^(lib|endpoints)/ - [F,L]
+
+  # Calquera /api/<cousa> que non sexa un ficheiro real → index.php
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>

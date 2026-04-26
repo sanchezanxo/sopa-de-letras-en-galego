@@ -1,0 +1,10 @@
+{
+  "tempo_total_seg": 300,
+  "tamano_grade": 10,
+  "palabras_por_sopa": [5, 6, 7, 8],
+  "puntos_por_letra": 10,
+  "bonus_sopa_completa": 100,
+  "bonus_sopa_perfecta": 50,
+  "bonus_segundo_restante": 2,
+  "multiplicador_racha": 1.1
+}

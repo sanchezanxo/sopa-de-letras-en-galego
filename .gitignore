@@ -1,0 +1,50 @@
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Logs e cache
+*.log
+.cache/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (non usado)
+node_modules/
+
+# Configuración local
+.env
+.claude/settings.local.json
+.claude/
+
+# Instrucións privadas e desenvolvemento local
+CLAUDE.md
+router.php
+
+# Backend: configuración con segredos
+api/config.php
+
+# BBDD local
+db/*.sqlite
+db/*.sqlite-journal
+db/*.sqlite-wal
+db/*.sqlite-shm
+
+# Legado /private/ (datos reais do servidor antigo)
+private/scores.json
+private/leads.json
+private/rate_limit.json
+private/.rate_limit_*
+private/backups/
+
+# Capturas
+m-*.png
+d-*.png
+.playwright-mcp/
+
+# Backups
+*.bak
+*~

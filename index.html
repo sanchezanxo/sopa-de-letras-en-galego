@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#373F27">
+  <title>Sopa de Letras en galego · As Chaves da Lingua</title>
+  <meta name="description" content="Reto de 5 minutos: cantas sopas de letras es quen de resolver en galego?">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23373F27'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='22' fill='%23cda34f' text-anchor='middle' font-weight='700'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/screens.css">
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XSVJ6QPBX1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XSVJ6QPBX1', { send_page_view: false });
+  </script>
+</head>
+<body data-pantalla-activa="home">
+
+  <main id="app" role="main">
+
+    <!-- HOME -->
+    <section class="pantalla pantalla--home" data-pantalla="home" aria-labelledby="home-titulo">
+      <header class="pantalla__cabeceira pantalla__cabeceira--centrada">
+        <h1 id="home-titulo" class="titulo-xogo">Sopa de letras<span class="titulo-xogo__acento">en galego</span></h1>
+        <p class="subtitulo subtitulo--home">Reto de 5 minutos: cantas sopas es quen de resolver? Aprende vocabulario galego mentres xogas.</p>
+      </header>
+      <nav class="home-acciones" aria-label="Menú principal">
+        <button type="button" class="boton boton--primario boton--grande boton--ancho" data-accion="empezar-reto">Comezar reto</button>
+        <button type="button" class="boton boton--secundario boton--ancho" data-accion="continuar-reto" hidden>Continuar reto</button>
+      </nav>
+      <footer class="home-rodape">
+        <nav class="home-rodape__menu" aria-label="Páxinas do sitio">
+          <a href="#como-se-xoga" class="ligazon-rodape" data-ir-a="como-se-xoga">Como se xoga</a>
+          <span class="home-rodape__sep" aria-hidden="true">·</span>
+          <a href="#ranking" class="ligazon-rodape" data-ir-a="ranking">Ranking</a>
+          <span class="home-rodape__sep" aria-hidden="true">·</span>
+          <a href="#legal" class="ligazon-rodape" data-ir-a="legal">Legal</a>
+          <span class="home-rodape__sep" aria-hidden="true">·</span>
+          <span class="home-rodape__version">v1.0</span>
+        </nav>
+        <p class="autoria">xogo por <a href="https://aschavesdalingua.gal" target="_blank" rel="noopener" class="ligazon-autoria">As Chaves da Lingua</a></p>
+      </footer>
+    </section>
+
+    <!-- PLAY -->
+    <section class="pantalla pantalla--play" data-pantalla="play" aria-labelledby="play-titulo" hidden>
+      <header class="xogo-cabeceira">
+        <div class="barra-tempo" aria-hidden="true"><div class="barra-tempo__enchida" data-zona="barra-tempo"></div></div>
+        <div class="xogo-meta">
+          <span class="xogo-meta__tempo" data-zona="tempo" aria-live="polite" aria-label="Tempo restante">5:00</span>
+          <span class="xogo-meta__contador">Sopa <strong data-zona="sopa-num">1</strong></span>
+          <span class="xogo-meta__contador">Puntos: <strong data-zona="puntos">0</strong></span>
+          <button type="button" class="xogo-meta__rematar" data-accion="rematar-desde-play" aria-label="Rematar reto">✕</button>
+        </div>
+      </header>
+
+      <h2 id="play-titulo" class="oculto-visualmente" tabindex="-1">Sopa en xogo</h2>
+
+      <div class="sopa" data-zona="sopa" role="grid" aria-label="Sopa de letras"></div>
+
+      <div class="palabras-buscar">
+        <span class="palabras-buscar__titulo">Palabras a atopar</span>
+        <div class="palabras-buscar__lista" data-zona="palabras-lista" role="list"></div>
+        <p class="palabras-buscar__progreso" data-zona="progreso"></p>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="pantalla pantalla--results" data-pantalla="results" aria-labelledby="results-titulo" hidden>
+      <header class="pantalla__cabeceira pantalla__cabeceira--centrada">
+        <h2 id="results-titulo" data-zona="results-titulo">Reto rematado</h2>
+        <p class="subtitulo" data-zona="results-subtitulo"></p>
+      </header>
+
+      <div class="resumo">
+        <div class="resumo__puntos">
+          <span class="resumo__puntos-num" data-zona="results-puntos">0</span>
+          <span class="resumo__puntos-etiqueta">puntos</span>
+        </div>
+        <div class="stats-grid">
+          <div class="stats-grid__celda">
+            <span class="stats-grid__valor" data-zona="results-sopas">0</span>
+            <span class="stats-grid__etiqueta">Sopas completas</span>
+          </div>
+          <div class="stats-grid__celda">
+            <span class="stats-grid__valor" data-zona="results-palabras">0</span>
+            <span class="stats-grid__etiqueta">Palabras atopadas</span>
+          </div>
+          <div class="stats-grid__celda">
+            <span class="stats-grid__valor" data-zona="results-racha">0</span>
+            <span class="stats-grid__etiqueta">Racha máxima</span>
+          </div>
+          <div class="stats-grid__celda">
+            <span class="stats-grid__valor" data-zona="results-tempo">5:00</span>
+            <span class="stats-grid__etiqueta">Tempo usado</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ranking-consentimento" data-zona="consentimento">
+        <p class="ranking-consentimento__pregunta">Garda a túa puntuación no ranking público?</p>
+        <input type="text" class="entrada-texto" data-zona="nome-input" placeholder="O teu nome (opcional)" maxlength="60" autocomplete="off">
+        <button type="button" class="boton boton--primario boton--ancho" data-accion="enviar-ranking">Gardar puntuación</button>
+        <p class="ranking-consentimento__estado" data-zona="ranking-estado" role="status" aria-live="polite"></p>
+      </div>
+
+      <nav class="home-acciones" aria-label="Accións finais">
+        <button type="button" class="boton boton--secundario boton--ancho" data-accion="compartir">Compartir</button>
+        <button type="button" class="boton boton--secundario boton--ancho" data-ir-a="ranking">Ver ranking público</button>
+        <button type="button" class="boton boton--primario boton--ancho" data-accion="empezar-reto">Xogar de novo</button>
+        <button type="button" class="boton boton--fantasma boton--ancho" data-accion="volver-home">Volver ao inicio</button>
+      </nav>
+    </section>
+
+    <!-- RANKING -->
+    <section class="pantalla pantalla--ranking" data-pantalla="ranking" aria-labelledby="ranking-titulo" hidden>
+      <header class="pantalla__cabeceira pantalla__cabeceira--compacta">
+        <button type="button" class="boton-volver" data-ir-a="home" aria-label="Volver ao inicio">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+        <h2 id="ranking-titulo">Ranking</h2>
+      </header>
+      <div class="chip-grupo" role="tablist" aria-label="Período do ranking">
+        <button type="button" class="chip is-activo" data-periodo="semana" role="tab" aria-selected="true">Semana</button>
+        <button type="button" class="chip" data-periodo="mes" role="tab" aria-selected="false">Mes</button>
+        <button type="button" class="chip" data-periodo="todo" role="tab" aria-selected="false">Todo</button>
+      </div>
+      <ol class="ranking-lista" data-zona="ranking-lista" aria-label="Mellores partidas"></ol>
+      <p class="ranking-mensaxe" data-zona="ranking-mensaxe" role="status" aria-live="polite">Cargando…</p>
+    </section>
+
+    <!-- COMO SE XOGA -->
+    <section class="pantalla pantalla--como-xogar" data-pantalla="como-se-xoga" aria-labelledby="como-titulo" hidden>
+      <header class="pantalla__cabeceira pantalla__cabeceira--compacta">
+        <button type="button" class="boton-volver" data-ir-a="home" aria-label="Volver ao inicio">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+        <h2 id="como-titulo">Como se xoga</h2>
+      </header>
+      <ol class="como-pasos">
+        <li class="como-paso">
+          <span class="como-paso__num">1</span>
+          <div class="como-paso__corpo">
+            <h3>O reto</h3>
+            <p>Tes <strong>5 minutos</strong> para resolver o maior número de sopas de letras posible. Cada nova sopa aumenta a dificultade, engadindo unha letra máis á grella ou unha palabra adicional.</p>
+          </div>
+        </li>
+        <li class="como-paso">
+          <span class="como-paso__num">2</span>
+          <div class="como-paso__corpo">
+            <h3>Atopar palabras</h3>
+            <p>Selecciona palabras arrastrando desde a primeira letra ata a última.</p>
+            <p>As palabras aparecen só en horizontal ou vertical, nunca en diagonal, e poden lerse en ambos sentidos.</p>
+          </div>
+        </li>
+        <li class="como-paso">
+          <span class="como-paso__num">3</span>
+          <div class="como-paso__corpo">
+            <h3>Puntuación</h3>
+            <ul class="como-paso__lista">
+              <li>Cada letra atopada suma 10 puntos.</li>
+              <li>Completar unha sopa dáche 100 puntos adicionais.</li>
+              <li>Se a completas sen erros, engádense 50 puntos extra.</li>
+              <li>Tamén recibes un bono polo tempo restante en cada sopa.</li>
+              <li>Se completas varias sopas seguidas sen fallos, activarase un multiplicador de puntuación.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="como-paso">
+          <span class="como-paso__num">4</span>
+          <div class="como-paso__corpo">
+            <h3>Final do reto</h3>
+            <p>O reto remata ao esgotarse os 5 minutos ou cando decidas saír (botón ✕ na cabeceira). Ao final verás un resumo coa túa puntuación e poderás gardala no ranking.</p>
+          </div>
+        </li>
+      </ol>
+      <button type="button" class="boton boton--primario boton--grande boton--ancho" data-accion="empezar-reto">Comezar reto</button>
+    </section>
+
+    <!-- LEGAL -->
+    <section class="pantalla pantalla--legal" data-pantalla="legal" aria-labelledby="legal-titulo" hidden>
+      <header class="pantalla__cabeceira pantalla__cabeceira--compacta">
+        <button type="button" class="boton-volver" data-ir-a="home" aria-label="Volver ao inicio">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+        <h2 id="legal-titulo">Aviso legal e privacidade</h2>
+      </header>
+      <section class="legal-bloque">
+        <h3>Privacidade</h3>
+        <p>Esta web non require rexistro nin solicita datos persoais. Se gardas unha partida no ranking público, almacénase só o nome que ti escribas e a puntuación.</p>
+        <p>Para evitar abusos do ranking gardamos un identificador técnico anónimo (hash da IP + navegador) que non permite identificarte. Pódese rotar e invalidar en calquera momento.</p>
+      </section>
+      <section class="legal-bloque">
+        <h3>Cookies e analítica</h3>
+        <p>Empregamos as seguintes cookies:</p>
+        <ul class="legal-lista">
+          <li><strong>sopadeletras_sid</strong> (técnica): cookie de sesión para protexer o envío de partidas. Necesaria para que o ranking funcione. Non é de seguimento.</li>
+          <li><strong>_ga, _ga_XSVJ6QPBX1</strong> (Google Analytics): permítennos saber cantas persoas xogan e que pantallas usan, para mellorar o servizo. Os datos envíanse anonimizados a Google.</li>
+        </ul>
+        <p>Se non queres que se envíen datos a Google Analytics podes activar o modo "Non rastrexar" do teu navegador, usar un bloqueador como uBlock Origin, ou non visitar esta web.</p>
+      </section>
+      <section class="legal-bloque">
+        <h3>Licenzas</h3>
+        <ul class="legal-lista">
+          <li><strong>Base léxica</strong>: CC BY-NC 4.0.</li>
+          <li><strong>Código fonte</strong>: GPL-3.0.</li>
+          <li><strong>Tipografías</strong>: Merriweather e Open Sans, ambas Open Font License.</li>
+        </ul>
+      </section>
+      <section class="legal-bloque">
+        <h3>Autoría</h3>
+        <p>Sopa de letras en galego é un xogo creado por <a href="https://aschavesdalingua.gal" target="_blank" rel="noopener">As Chaves da Lingua</a>.</p>
+      </section>
+    </section>
+
+  </main>
+
+  <dialog class="dialogo dialogo--transicion" id="dialogo-transicion" aria-labelledby="dialogo-transicion-titulo">
+    <div class="dialogo__corpo">
+      <div class="transicion">
+        <h3 class="transicion__titulo" id="dialogo-transicion-titulo" data-zona="trans-titulo">Sopa completa!</h3>
+        <span class="transicion__puntos" data-zona="trans-puntos">+150</span>
+        <p class="transicion__seguinte" data-zona="trans-seguinte">Pasando á seguinte sopa…</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script type="module" src="/assets/js/app.js"></script>
+</body>
+</html>
